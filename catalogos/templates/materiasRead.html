@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Listado de materias</h3>
+    <a href=# class="btn btn-primary">Nueva Materia</a>
+    {% if materias %}
+    <br></br>
+    <table>
+        <thead>
+            <tr>
+                <td>Clave</td>
+                <td>Nombre</td>
+                <td>Creditos</td>
+                <td>Estatus</td>
+                <td>Plan</td>
+                <td>Opciones</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in materias  %}
+            <tr>
+                <td>{{ item.clave }}</td>
+                <td>{{ item.nombre }}</td>
+                <td>{{ item.creditos }}</td>
+                <td>{{ item.estatus }}</td>
+                <td>{{ item.plan }}</td>
+                <td>
+                    <a href="{% url 'materiaUpdate' item.id %}" class="btn btn-secondary">Editar</a>
+                    <a href="{% url 'materiaDelete' item.id %}" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <h1 style="color: red;">No hay registros en la BD</h1>
+    {% endif %}
+{% endblock %}

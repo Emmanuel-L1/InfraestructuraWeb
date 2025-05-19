@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <h3>Estas seguro(a) de eliminar el plan {{plan.nombre}}</h3>
+        <button type="submit" class="btn btn-danger">Si, Eliminar</button>
+        <a href="{% url 'planRead' %}" class="btn btn-success">No, Cancelar</a>
+    </form>
+{% endblock %}
